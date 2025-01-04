@@ -24,12 +24,7 @@ public class LandSpawner : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > time)
-        {
-            DeletLands();
-            timer = 0f;
-        }
+
     }
 
     void SpawnLands()
