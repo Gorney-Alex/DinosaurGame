@@ -1,46 +1,83 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LandSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject landPrefab;
-    [SerializeField] private float time = 1.5f;
+    [SerializeField] private float speed = 1.5f;
 
-    private float timer;
-    private int maxLands = 4;
-    private int segmentLength = 10;
+    private Vector3 forwardLands = new Vector3(0, 0, 0);
+    private Vector3 moveLand = new Vector3(0f, 0f, 1f);
+    private List<GameObject> landsPrefabs = new List<GameObject>();
 
-    private List<GameObject> objectList = new List<GameObject>();
-    private Vector3 nextSpawnLandPosition = new Vector3(0, 0, -10);
+    private float timer = 0;
+    private int maxLands = 5;
+    private float landLength = 10;
 
-    void Start()
+    private GameObject parentObject;
+
+    private void Start()
     {
+        parentObject = new GameObject("MainLands");
+
+        timer = speed;
+        for (int i = 0; i < maxLands; i++)
+        {
+            SpawnLandOnce();
+        }
+    }
+
+    private void Update()
+    {
+        SpawnLands();
+        MoveLand();
+        DestroyOldLands();
+    }
+
+    private void ResetLevel()
+    {
+        while (landsPrefabs.Count > 0)
+        {
+            Destroy(landsPrefabs[0]);
+            landsPrefabs.RemoveAt(0);
+        }
+
         for (int i = 0; i < maxLands; i++)
         {
             SpawnLands();
         }
     }
 
-    void Update()
+    private void SpawnLandOnce()
     {
-
+        GameObject newSegment = Instantiate(landPrefab, forwardLands, Quaternion.Euler(-90f, 0, 0), parentObject.transform);
+        landsPrefabs.Add(newSegment);
+        forwardLands += new Vector3(0, 0, -landLength);
     }
 
-    void SpawnLands()
+    private void SpawnLands()
     {
-        GameObject newSegment = Instantiate(landPrefab, nextSpawnLandPosition, Quaternion.Euler(-90f, 0f, 0f));
-        objectList.Add(newSegment);
-        nextSpawnLandPosition += new Vector3(0, 0, -segmentLength);
-    }
-
-    void DeletLands()
-    {
-        if (objectList.Count > maxLands)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
-            Destroy(objectList[0]);
-            objectList.RemoveAt(0);
+            GameObject newSegment = Instantiate(landPrefab, forwardLands, Quaternion.Euler(-90f, 0, 0), parentObject.transform);
+            landsPrefabs.Add(newSegment);
+            forwardLands += new Vector3(0, 0, -landLength);
+            timer = speed;
         }
-        SpawnLands();
+    }
+
+    private void MoveLand()
+    {
+        parentObject.transform.Translate(moveLand * speed * Time.deltaTime);
+    }
+
+    private void DestroyOldLands()
+    {
+        while (landsPrefabs.Count > maxLands)
+        {
+            Destroy(landsPrefabs[0]);
+            landsPrefabs.RemoveAt(0);
+        }
     }
 }
