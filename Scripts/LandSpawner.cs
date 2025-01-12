@@ -5,33 +5,65 @@ using UnityEngine;
 public class LandSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject landPrefab;
-    [SerializeField] private float time = 1.5f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float time = 2f;
 
     private float timer;
-    private int maxLands = 4;
+    private int maxLands = 5;
     private int segmentLength = 10;
 
     private List<GameObject> objectList = new List<GameObject>();
-    private Vector3 nextSpawnLandPosition = new Vector3(0, 0, -10);
+    private Vector3 nextSpawnLandPosition = new Vector3(0, 0, 0);
 
     void Start()
     {
+        timer = time;
         for (int i = 0; i < maxLands; i++)
         {
-            SpawnLands();
+            if (objectList.Count > 0) 
+            {
+                nextSpawnLandPosition = objectList[objectList.Count - 1].transform.position + new Vector3(0, 0, -segmentLength); 
+            }
+            else{
+                nextSpawnLandPosition += new Vector3(0, 0, -segmentLength);
+            }
+            GameObject newSegment = Instantiate(landPrefab, nextSpawnLandPosition, Quaternion.Euler(-90f, 0f, 0f));
+            objectList.Add(newSegment);
         }
     }
 
     void Update()
     {
-
+        SpawnLands();
+        DeletLands();
+        MoveLands();
     }
 
     void SpawnLands()
     {
-        GameObject newSegment = Instantiate(landPrefab, nextSpawnLandPosition, Quaternion.Euler(-90f, 0f, 0f));
-        objectList.Add(newSegment);
-        nextSpawnLandPosition += new Vector3(0, 0, -segmentLength);
+        if (timer <= 0f)
+        {
+            
+            if (objectList.Count > 0) 
+            {
+                nextSpawnLandPosition = objectList[objectList.Count - 1].transform.position + new Vector3(0, 0, -segmentLength); 
+            }
+            else{
+                nextSpawnLandPosition += new Vector3(0, 0, -segmentLength);
+            }
+            GameObject newSegment = Instantiate(landPrefab, nextSpawnLandPosition, Quaternion.Euler(-90f, 0f, 0f));
+            objectList.Add(newSegment);
+            timer = time;
+        }
+        timer -= Time.deltaTime;
+    }
+
+    void MoveLands()
+    {
+        foreach (GameObject segment in objectList)
+        {
+            segment.transform.Translate(Vector3.down * speed * Time.deltaTime);
+        }
     }
 
     void DeletLands()
@@ -41,6 +73,6 @@ public class LandSpawner : MonoBehaviour
             Destroy(objectList[0]);
             objectList.RemoveAt(0);
         }
-        SpawnLands();
+
     }
 }
