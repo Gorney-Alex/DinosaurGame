@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,22 +8,22 @@ public class LandSpawner : MonoBehaviour
     [SerializeField] private float time = 2f;
 
     private float timer;
-    private int maxLands = 5;
+    private int maxLands = 7;
     private int segmentLength = 10;
 
     private List<GameObject> objectList = new List<GameObject>();
     private Vector3 nextSpawnLandPosition = new Vector3(0, 0, 0);
 
-    void Start()
+    private void Start()
     {
-        timer = time;
+        timer = speed;
         for (int i = 0; i < maxLands; i++)
         {
             if (objectList.Count > 0) 
             {
                 nextSpawnLandPosition = objectList[objectList.Count - 1].transform.position + new Vector3(0, 0, -segmentLength); 
             }
-            else{
+            else {
                 nextSpawnLandPosition += new Vector3(0, 0, -segmentLength);
             }
             GameObject newSegment = Instantiate(landPrefab, nextSpawnLandPosition, Quaternion.Euler(-90f, 0f, 0f));
@@ -32,14 +31,14 @@ public class LandSpawner : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         SpawnLands();
-        DeletLands();
         MoveLands();
+        DestroyOldLands();
     }
 
-    void SpawnLands()
+    private void SpawnLands()
     {
         if (timer <= 0f)
         {
@@ -48,7 +47,7 @@ public class LandSpawner : MonoBehaviour
             {
                 nextSpawnLandPosition = objectList[objectList.Count - 1].transform.position + new Vector3(0, 0, -segmentLength); 
             }
-            else{
+            else {
                 nextSpawnLandPosition += new Vector3(0, 0, -segmentLength);
             }
             GameObject newSegment = Instantiate(landPrefab, nextSpawnLandPosition, Quaternion.Euler(-90f, 0f, 0f));
@@ -66,13 +65,12 @@ public class LandSpawner : MonoBehaviour
         }
     }
 
-    void DeletLands()
+    private void DestroyOldLands()
     {
-        if (objectList.Count > maxLands)
+        while (objectList.Count > maxLands)
         {
             Destroy(objectList[0]);
             objectList.RemoveAt(0);
         }
-
     }
 }
