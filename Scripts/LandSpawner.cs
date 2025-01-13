@@ -16,7 +16,7 @@ public class LandSpawner : MonoBehaviour
 
     private void Start()
     {
-        timer = speed;
+        timer = time;
         for (int i = 0; i < maxLands; i++)
         {
             if (objectList.Count > 0) 
@@ -57,7 +57,7 @@ public class LandSpawner : MonoBehaviour
         timer -= Time.deltaTime;
     }
 
-    void MoveLands()
+    private void MoveLands()
     {
         foreach (GameObject segment in objectList)
         {
@@ -67,10 +67,20 @@ public class LandSpawner : MonoBehaviour
 
     private void DestroyOldLands()
     {
-        while (objectList.Count > maxLands)
+        while (objectList.Count > maxLands + 2)
         {
             Destroy(objectList[0]);
             objectList.RemoveAt(0);
         }
+    }
+
+    public float GetTime()
+    {
+        return time;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 }
