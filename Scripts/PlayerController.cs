@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speedJump = 5f;
     private Rigidbody playerRigidbody;
+
+    private bool isGrounded = true;
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -13,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             JumpPlayer();
         }
@@ -22,5 +24,14 @@ public class PlayerController : MonoBehaviour
     void JumpPlayer()
     {
         playerRigidbody.AddForce(Vector3.up * speedJump, ForceMode.Impulse);
+        isGrounded = false;
+    }
+
+    void OnCollisionEnter(Collision inputLand)
+    {
+        if (inputLand.gameObject.CompareTag("Land"))
+        {
+            isGrounded = true;
+        } 
     }
 }
