@@ -10,7 +10,7 @@ public class LandSpawner : MonoBehaviour
     [SerializeField] private float time = 2f;
 
     private float timer;
-    private int maxLands = 7;
+    private int maxLands = 5;
     private int segmentLength = 10;
 
     private List<GameObject> objectList = new List<GameObject>();
@@ -37,7 +37,7 @@ public class LandSpawner : MonoBehaviour
     {
         SpawnLands();
         MoveLands();
-        DestroyOldLands();
+        RemoveObject(landPrefab);
     }
 
     private void SpawnLands()
@@ -67,14 +67,13 @@ public class LandSpawner : MonoBehaviour
         }
     }
 
-    private void DestroyOldLands()
+    public void RemoveObject(GameObject obj)
+{
+    if (objectList.Contains(obj))
     {
-        while (objectList.Count > maxLands + 2)
-        {
-            Destroy(objectList[0]);
-            objectList.RemoveAt(0);
-        }
+        objectList.RemoveAt(0);
     }
+}
 
     public float GetTime()
     {

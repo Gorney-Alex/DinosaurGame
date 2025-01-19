@@ -10,8 +10,6 @@ public class SpawnBarricade : MonoBehaviour
 
     private List<GameObject> barricadeList = new List<GameObject>();
     private Vector3 nextSpawnBarricadePosition = new Vector3(0, 1.4f, 0); // Устанавливаем начальную ось Y
-
-    private int maxBarricades = 6;
     
     private float speed;
     private float time;
@@ -30,14 +28,14 @@ public class SpawnBarricade : MonoBehaviour
     {
         NextSpawnBarricade();
         MoveBarricades();
-        DestroyOldBarricades();
+        RemoveBarricade(barricadePrefab);
     }
 
     void NextSpawnBarricade()
     {
         if (timer <= 0f)
         {
-            int randomIndexLength = Random.Range(10, 15);
+            int randomIndexLength = Random.Range(10, 20);
             if (barricadeList.Count > 0) 
             {
                 nextSpawnBarricadePosition = barricadeList[barricadeList.Count - 1].transform.position + new Vector3(0, 0 , -randomIndexLength); 
@@ -63,11 +61,10 @@ public class SpawnBarricade : MonoBehaviour
         }
     }
 
-    private void DestroyOldBarricades()
+    public void RemoveBarricade(GameObject obj)
     {
-        while (barricadeList.Count > maxBarricades)
+        if (barricadeList.Contains(obj))
         {
-            Destroy(barricadeList[0]);
             barricadeList.RemoveAt(0);
         }
     }
