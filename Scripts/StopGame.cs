@@ -1,22 +1,9 @@
-// Gorney-Alex Dinosaur Game Runner
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StopGameMoment : MonoBehaviour
+public class StopGame : MonoBehaviour
 {
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Barricade"))
@@ -25,5 +12,4 @@ public class StopGameMoment : MonoBehaviour
             Debug.Log("Game Stopped");
         }
     }
-
 }
