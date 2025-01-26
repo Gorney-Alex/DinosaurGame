@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class StopGameMoment : MonoBehaviour
 {
@@ -24,21 +25,21 @@ public class StopGameMoment : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenuUI.SetActive(false); // Скрываем меню
-        Time.timeScale = 1f;         // Возвращаем время
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void PauseGame()
     {
-        pauseMenuUI.SetActive(true); // Показываем меню
-        Time.timeScale = 0f;         // Останавливаем время
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void ExitGame()
     {
         Debug.Log("Exiting Game...");
-        Application.Quit();          // Закрывает игру
+        EditorApplication.Exit(0);
     }
 }

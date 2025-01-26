@@ -7,12 +7,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speedJump = 5f;
+    [SerializeField] private AudioClip jumpSound;
     private Rigidbody playerRigidbody;
+    private AudioSource audioSource;
 
     private bool isGrounded = true;
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -27,6 +30,11 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody.AddForce(Vector3.up * speedJump, ForceMode.Impulse);
         isGrounded = false;
+
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
     }
 
     void OnCollisionEnter(Collision inputLand)
