@@ -10,6 +10,7 @@ public class SpawnBarricade : MonoBehaviour
 
     private List<GameObject> barricadeList = new List<GameObject>();
     private Vector3 nextSpawnBarricadePosition = new Vector3(0, 1.4f, 0);
+    private int maxBarricade = 5;
     
     private float speed;
     private float time;
@@ -34,7 +35,7 @@ public class SpawnBarricade : MonoBehaviour
 
     void NextSpawnBarricade()
     {
-        if (timer <= 0f)
+        if (timer <= 0f && barricadeList.Count <= maxBarricade)
         {
             int randomIndexLength = Random.Range(10, 20);
             if (barricadeList.Count > 0) 

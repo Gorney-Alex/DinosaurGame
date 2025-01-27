@@ -7,14 +7,14 @@ public class LandSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject landPrefab;
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float time = 2f;
+    [SerializeField] private float time = 1.2f;
 
     private float timer;
-    private int maxLands = 5;
+    private int maxLands = 8;
     private int segmentLength = 10;
 
     private List<GameObject> objectList = new List<GameObject>();
-    private Vector3 nextSpawnLandPosition = new Vector3(0, 0, 0);
+    private Vector3 nextSpawnLandPosition = new Vector3(0, 0, 10);
     private int gamePoints;
     PointsForGame Points;
 
@@ -53,9 +53,8 @@ public class LandSpawner : MonoBehaviour
 
     private void SpawnLands()
     {
-        if (timer <= 0f)
+        if (timer <= 0f && objectList.Count >= maxLands)
         {
-            
             if (objectList.Count > 0) 
             {
                 nextSpawnLandPosition = objectList[objectList.Count - 1].transform.position + new Vector3(0, 0, -segmentLength); 
