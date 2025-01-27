@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5626517549761394966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1998464174674535332}
+  m_Layer: 0
+  m_Name: Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1998464174674535332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626517549761394966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.39, z: 0.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4007567937033186796}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8587596576055174528
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,6 +48,7 @@ GameObject:
   - component: {fileID: 2921754683130484868}
   - component: {fileID: 4045095869676754925}
   - component: {fileID: 3746247038842367638}
+  - component: {fileID: 2464513620243892901}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,9 +68,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1998464174674535332}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -80, y: -90, z: 90}
 --- !u!33 &6415185308043539081
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -165,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43df46141affd8443baec62b001a9429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  texyPoints: {fileID: 0}
 --- !u!114 &4045095869676754925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,3 +307,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!111 &2464513620243892901
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587596576055174528}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 971ffd7a28fae0d4ba5b5116a1fcd8d1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1103d5a4cf1b93541b0eaffb0238643f, type: 2}
+  - {fileID: 7400000, guid: 971ffd7a28fae0d4ba5b5116a1fcd8d1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 1

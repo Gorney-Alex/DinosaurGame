@@ -15,9 +15,15 @@ public class LandSpawner : MonoBehaviour
 
     private List<GameObject> objectList = new List<GameObject>();
     private Vector3 nextSpawnLandPosition = new Vector3(0, 0, 0);
+    private int gamePoints;
+    PointsForGame Points;
 
     private void Start()
     {
+        GameObject getSpeedLandSpawner = GameObject.Find("Player");
+        Points = getSpeedLandSpawner.GetComponent<PointsForGame>();
+
+
         timer = time;
         for (int i = 0; i < maxLands; i++)
         {
@@ -35,9 +41,14 @@ public class LandSpawner : MonoBehaviour
 
     private void Update()
     {
+        gamePoints = Points.GetPoints();
         SpawnLands();
         MoveLands();
         RemoveObject(landPrefab);
+        if (gamePoints >= 50)
+        {
+            speed = 7f;
+        }
     }
 
     private void SpawnLands()

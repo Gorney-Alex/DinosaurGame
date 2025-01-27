@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class StopGame : MonoBehaviour
 {
+    private bool gameIsEnded = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Barricade"))
         {
-            Time.timeScale = 0;
-            Debug.Log("Game Stopped");
+            gameIsEnded = true;
         }
+    }
+
+    public bool GetGameIsEnded()
+    {
+        return gameIsEnded;
     }
 }

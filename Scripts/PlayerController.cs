@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip jumpSound;
     private Rigidbody playerRigidbody;
     private AudioSource audioSource;
+    [SerializeField] private ParticleSystem jumpEffect;
 
     private bool isGrounded = true;
     void Start()
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody.AddForce(Vector3.up * speedJump, ForceMode.Impulse);
         isGrounded = false;
+        jumpEffect.Stop();
 
         if (jumpSound != null && audioSource != null)
         {
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (inputLand.gameObject.CompareTag("Land"))
         {
             isGrounded = true;
+            jumpEffect.Play();
         } 
     }
 }

@@ -31,15 +31,15 @@ public class StopMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenuUI.SetActive(false); // Скрываем меню
-        Time.timeScale = 1f;         // Возвращаем время
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void PauseGame()
     {
-        pauseMenuUI.SetActive(true); // Показываем меню
-        Time.timeScale = 0f;         // Останавливаем время
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
         isPaused = true;
     }
 
@@ -48,4 +48,5 @@ public class StopMenu : MonoBehaviour
         Debug.Log("Exiting Game...");
         Application.Quit();
     }
+
 }

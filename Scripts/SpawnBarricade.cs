@@ -9,23 +9,24 @@ public class SpawnBarricade : MonoBehaviour
     [SerializeField] private GameObject barricadePrefab;
 
     private List<GameObject> barricadeList = new List<GameObject>();
-    private Vector3 nextSpawnBarricadePosition = new Vector3(0, 1.4f, 0); // Устанавливаем начальную ось Y
+    private Vector3 nextSpawnBarricadePosition = new Vector3(0, 1.4f, 0);
     
     private float speed;
     private float time;
     private float timer;
+    LandSpawner speedLands;
 
     void Start()
     {
         GameObject getSpeedLandSpawner = GameObject.Find("Creatorland");
-        LandSpawner speedLands = getSpeedLandSpawner.GetComponent<LandSpawner>();
-        speed = speedLands.GetSpeed();
+        speedLands = getSpeedLandSpawner.GetComponent<LandSpawner>();
         time = speedLands.GetTime();
         timer = time;
     }
 
     void Update()
     {
+        speed = speedLands.GetSpeed();
         NextSpawnBarricade();
         MoveBarricades();
         RemoveBarricade(barricadePrefab);
