@@ -1,31 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectDataBase
+public class ObjectList<T> where T : WorldObject
 {
-    private List<GameObject> _landList = new List<GameObject>();
-    private List<GameObject> _barricadeList = new List<GameObject>();
+    protected List<T> _objects = new List<T>();
 
-    public void AddLandObject(GameObject obj)
+    public virtual void AddObjectToList(T obj)
     {
-        if (obj == null)
-        {
-            Debug.LogError("Cannot add null object.");
-            return;
-        }
-        _landList.Add(obj);
+        _objects.Add(obj);
     }
 
-    
-    public void AddBarricadeObject(GameObject obj)
+    public List<T> GetAll() => _objects;
+
+    public void ClearList()
     {
-        if (obj == null)
-        {
-            Debug.LogError("Cannot add null object.");
-            return;
-        }
-        _barricadeList.Add(obj);
+        _objects.Clear();
     }
 }
-
