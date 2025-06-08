@@ -2,4 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectBarricadeData : ObjectDataBase<GameObject> { }
+public class ObjectMovemer : MonoBehaviour
+{
+    
+}

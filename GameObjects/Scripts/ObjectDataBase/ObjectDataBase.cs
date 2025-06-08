@@ -2,29 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ObjectDataBase<T> : MonoBehaviour
+public class ObjectDataBase
 {
-    static private List<T> _objectList = new List<T>();
+    private List<GameObject> _landList = new List<GameObject>();
+    private List<GameObject> _barricadeList = new List<GameObject>();
 
-    static public void AddObject(T newObject)
+    public void AddLandObject(GameObject obj)
     {
-        if (newObject == null)
+        if (obj == null)
         {
-            Debug.LogError("Cannot add a null object to the database.");
+            Debug.LogError("Cannot add null object.");
             return;
         }
-
-        _objectList.Add(newObject);
+        _landList.Add(obj);
     }
 
-    static public void RemoveObject()
+    
+    public void AddBarricadeObject(GameObject obj)
     {
-        if (_objectList.Count == 0)
+        if (obj == null)
         {
-            Debug.LogError("Cannot remove an object from an empty database.");
+            Debug.LogError("Cannot add null object.");
             return;
         }
-
-        _objectList.RemoveAt(0);
+        _barricadeList.Add(obj);
     }
 }
+
