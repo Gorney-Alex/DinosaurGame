@@ -6,6 +6,9 @@ public static class ObjectList
     private static List<GameObject> _landList = new List<GameObject>();
     private static List<GameObject> _barricadeList = new List<GameObject>();
 
+    public static IReadOnlyList<GameObject> GetLandList() => _landList.AsReadOnly();
+    public static IReadOnlyList<GameObject> GetBarricadeList() => _barricadeList.AsReadOnly();
+
     public static void AddToList(GameObject worldObject)
     {
         WorldObject worldObjectComponent = worldObject.GetComponent<WorldObject>();
@@ -18,6 +21,7 @@ public static class ObjectList
         else if (worldObjectComponent.Type == ObjectType.Barricade)
         {
             _barricadeList.Add(worldObject);
+            Debug.Log($"{worldObjectComponent} add to BarricadeList");
         }
     }
 }
