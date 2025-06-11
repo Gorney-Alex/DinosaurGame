@@ -14,7 +14,7 @@ public class SpawnerController : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            SpawnerObjects.SpawnObjectLand(_landPrefabs[0], _spawnDirection, _quaternion);
+            SpawnerObjects.SpawnObject(_landPrefabs[0], _spawnDirection, _quaternion);
             _spawnDirection.z -= _landLength;
         }
     }

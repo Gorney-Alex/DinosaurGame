@@ -1,19 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectList<T> where T : WorldObject
+public static class ObjectList
 {
-    protected List<T> _objects = new List<T>();
+    private static List<GameObject> _landList = new List<GameObject>();
+    private static List<GameObject> _barricadeList = new List<GameObject>();
 
-    public virtual void AddObjectToList(T obj)
+    public static void AddToList(GameObject worldObject)
     {
-        _objects.Add(obj);
-    }
+        WorldObject worldObjectComponent = worldObject.GetComponent<WorldObject>();
 
-    public List<T> GetAll() => _objects;
-
-    public void ClearList()
-    {
-        _objects.Clear();
+        if (worldObjectComponent.Type == ObjectType.Land)
+        {
+            _landList.Add(worldObject);
+            Debug.Log($"{worldObjectComponent} add to LandList");
+        }
+        else if (worldObjectComponent.Type == ObjectType.Barricade)
+        {
+            _barricadeList.Add(worldObject);
+        }
     }
 }

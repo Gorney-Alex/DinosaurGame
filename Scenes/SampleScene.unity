@@ -224,6 +224,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 493136635055652972, guid: b38bd6cfa712829429bdd6546194d046, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493136635055652972, guid: b38bd6cfa712829429bdd6546194d046, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2396703424767143801, guid: b38bd6cfa712829429bdd6546194d046, type: 3}
       propertyPath: m_Name
       value: Player
@@ -234,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8206374400334397509, guid: b38bd6cfa712829429bdd6546194d046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 8206374400334397509, guid: b38bd6cfa712829429bdd6546194d046, type: 3}
       propertyPath: m_LocalPosition.z
@@ -406,10 +414,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1135374197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d6dea86054ef1439dee76cc57deb23, type: 3}
+  m_Script: {fileID: 11500000, guid: f7bc527a0a19b3640951dd6a62d0c1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _landPrefab: {fileID: 3936157738473115212, guid: 62b4351384b01674ba7b7c692c20ef80, type: 3}
+  _landPrefabs:
+  - {fileID: 3936157738473115212, guid: 62b4351384b01674ba7b7c692c20ef80, type: 3}
+  _barricadePrefabs:
+  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

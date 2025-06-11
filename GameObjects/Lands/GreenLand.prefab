@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7000918017220882260}
   - component: {fileID: 483363662832334601}
   - component: {fileID: 5165019786803656197}
-  - component: {fileID: 4814537673751645682}
+  - component: {fileID: 4412601801419464008}
   m_Layer: 0
   m_Name: GreenLand
   m_TagString: Untagged
@@ -166,7 +166,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4814537673751645682
+--- !u!114 &4412601801419464008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,8 +175,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3936157738473115212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bafca499705dd7b48b815c5f7e5cbfe1, type: 3}
+  m_Script: {fileID: 11500000, guid: cf177f65fbaa1ef42a4a8d0c4299f6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: GreenGrass
+  _name: GreenLnad
   _id: 1
+  _objectType: 0
