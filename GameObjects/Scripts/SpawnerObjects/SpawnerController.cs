@@ -11,28 +11,55 @@ public class SpawnerController : MonoBehaviour
     private Quaternion _quaternion = Quaternion.Euler(0, 0, 0);
     public const int _landLength = Constants.LAND_LENGTH;
 
+    private float _spawnTime = 2f;
+
     public void SpawningLandRoad()
     {
-        for (int i = 0; i < 10; i++)
+        if (ObjectDataBase.landListCount > 0)
         {
-            SpawnerObjects.SpawnObject(_landPrefabs[0], _spawnLandDirection, _quaternion);
+            _spawnLandDirection = ObjectDataBase.landListlastObject.transform.position + new Vector3(0f, 0f, -_landLength);
+        }
+        else
+        {
             _spawnLandDirection.z -= _landLength;
         }
+        SpawnerObjects.SpawnObject(_landPrefabs[0], _spawnLandDirection, _quaternion);
     }
 
     public void SpawningBarricades()
     {
-        for (int i = 0; i < 10; i++)
+        if (ObjectDataBase.BarricadeListCount > 0)
         {
-            SpawnerObjects.SpawnObject(_barricadePrefabs[0], _spawnBarricadeDirection, _quaternion);
-            _spawnBarricadeDirection.z -= _landLength;
+            _spawnLandDirection = ObjectDataBase.BarricadeListLastObject.transform.position + new Vector3(0f, 0f, -_landLength);
         }
+        else
+        {
+            _spawnLandDirection.z -= _landLength;
+        }
+        SpawnerObjects.SpawnObject(_landPrefabs[0], _spawnLandDirection, _quaternion);
     }
 
-    void Awake()
+    private void SpawnObjectsInGame()
     {
-        Debug.Log("Awake");
-        SpawningLandRoad();
-        SpawningBarricades();
+
+    }
+
+    private void Start()
+    {
+        StartCoroutine(TimeForSpawnLands());
+    }
+
+    private void Update()
+    {
+
+    }
+
+    IEnumerator TimeForSpawnLands()
+    {
+        while (true)
+        {
+            SpawningLandRoad();
+            yield return new WaitForSeconds(_spawnTime);
+        }
     }
 }
