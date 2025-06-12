@@ -39,19 +39,9 @@ public class SpawnerController : MonoBehaviour
         SpawnerObjects.SpawnObject(_landPrefabs[0], _spawnLandDirection, _quaternion);
     }
 
-    private void SpawnObjectsInGame()
-    {
-
-    }
-
     private void Start()
     {
         StartCoroutine(TimeForSpawnLands());
-    }
-
-    private void Update()
-    {
-
     }
 
     IEnumerator TimeForSpawnLands()

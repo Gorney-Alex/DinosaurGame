@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ObjectMovemer : MonoBehaviour
 {
+    private float _speedObject = Constants.SPEEP_OBJECT;
+    
     public void MovemerLands()
     {
         foreach (GameObject segment in ObjectDataBase.GetLandFromList())
         {
-            segment.transform.Translate(Vector3.forward * 3 * Time.deltaTime);
+            segment.transform.Translate(Vector3.forward * _speedObject * Time.deltaTime);
         }
     }
     
@@ -16,7 +18,7 @@ public class ObjectMovemer : MonoBehaviour
     {
         foreach (GameObject segment in ObjectDataBase.GetBarricadeFromList())
         {
-            segment.transform.Translate(Vector3.forward * 3 * Time.deltaTime);
+            segment.transform.Translate(Vector3.forward * _speedObject * Time.deltaTime);
         }
     }
 
