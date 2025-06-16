@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 918568406098614357}
   - component: {fileID: 3131809425420479918}
   - component: {fileID: 2731487441487306883}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model_0
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,11 +93,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7000918017220882260}
   - component: {fileID: 483363662832334601}
-  - component: {fileID: 5165019786803656197}
   - component: {fileID: 4412601801419464008}
-  m_Layer: 0
+  - component: {fileID: -6818295741967022615}
+  m_Layer: 6
   m_Name: GreenLand
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.4157643, y: 6.723116, z: 10.012266}
   m_Center: {x: -0.07984185, y: -1.9888024, z: -0.0070667267}
---- !u!54 &5165019786803656197
+--- !u!114 &4412601801419464008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936157738473115212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf177f65fbaa1ef42a4a8d0c4299f6db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: GreenLnad
+  _id: 1
+  _type: 0
+--- !u!54 &-6818295741967022615
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,18 +181,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4412601801419464008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3936157738473115212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf177f65fbaa1ef42a4a8d0c4299f6db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: GreenLnad
-  _id: 1
-  _objectType: 0
