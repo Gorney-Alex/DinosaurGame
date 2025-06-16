@@ -8,7 +8,7 @@ public class ObjectMovemer : MonoBehaviour
     
     public void MovemerLands()
     {
-        foreach (GameObject segment in ObjectDataBase.GetLandFromList())
+        foreach (GameObject segment in ObjectDataBase.LandList)
         {
             segment.transform.Translate(Vector3.forward * _speedObject * Time.deltaTime);
         }
@@ -16,7 +16,7 @@ public class ObjectMovemer : MonoBehaviour
     
     public void Movemerbarricades()
     {
-        foreach (GameObject segment in ObjectDataBase.GetBarricadeFromList())
+        foreach (GameObject segment in ObjectDataBase.BarricadeList)
         {
             segment.transform.Translate(Vector3.forward * _speedObject * Time.deltaTime);
         }

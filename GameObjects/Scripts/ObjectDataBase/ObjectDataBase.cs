@@ -6,14 +6,8 @@ public static class ObjectDataBase
     private static List<GameObject> _landList = new List<GameObject>();
     private static List<GameObject> _barricadeList = new List<GameObject>();
 
-    public static IReadOnlyList<GameObject> GetLandFromList() => _landList.AsReadOnly();
-    public static IReadOnlyList<GameObject> GetBarricadeFromList() => _barricadeList.AsReadOnly();
-
-    public static int landListCount => _landList.Count;
-    public static int BarricadeListCount => _barricadeList.Count;
-
-    public static GameObject landListlastObject => _landList[_landList.Count - 1];
-    public static GameObject BarricadeListLastObject => _barricadeList[_barricadeList.Count - 1];
+    public static IReadOnlyList<GameObject> LandList => _landList;
+    public static IReadOnlyList<GameObject> BarricadeList => _barricadeList;
 
     public static void AddToList(GameObject worldObject)
     {
@@ -29,5 +23,23 @@ public static class ObjectDataBase
             _barricadeList.Add(worldObject);
             Debug.Log($"{worldObjectComponent} add to BarricadeList");
         }
+    }
+
+    public static void RemoveInlist(GameObject worldObject)
+    {
+        WorldObject worldObjectComponent = worldObject.GetComponent<WorldObject>();
+
+        if (worldObjectComponent.Type == ObjectType.Land)
+        {
+            _landList.Remove(worldObject);
+            Debug.Log($"{worldObjectComponent} remove in LandList");
+        }
+        else if (worldObjectComponent.Type == ObjectType.Barricade)
+        {
+            _barricadeList.Remove(worldObject);
+            Debug.Log($"{worldObjectComponent} remove in BarricadeList");
+        }
+
+        Object.Destroy(worldObject);
     }
 }

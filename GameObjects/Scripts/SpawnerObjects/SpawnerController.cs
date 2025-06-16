@@ -15,9 +15,9 @@ public class SpawnerController : MonoBehaviour
 
     public void SpawningLandRoad()
     {
-        if (ObjectDataBase.landListCount > 0)
+        if (ObjectDataBase.LandList.Count > 0)
         {
-            _spawnLandDirection = ObjectDataBase.landListlastObject.transform.position + new Vector3(0f, 0f, -_landLength);
+            _spawnLandDirection = ObjectDataBase.LandList[ObjectDataBase.LandList.Count -1].transform.position + new Vector3(0f, 0f, -_landLength);
         }
         else
         {
@@ -28,15 +28,15 @@ public class SpawnerController : MonoBehaviour
 
     public void SpawningBarricades()
     {
-        if (ObjectDataBase.BarricadeListCount > 0)
+        if (ObjectDataBase.BarricadeList.Count > 0)
         {
-            _spawnLandDirection = ObjectDataBase.BarricadeListLastObject.transform.position + new Vector3(0f, 0f, -_landLength);
+            _spawnLandDirection = ObjectDataBase.BarricadeList[ObjectDataBase.BarricadeList.Count - 1].transform.position + new Vector3(0f, 0f, -_landLength);
         }
         else
         {
             _spawnLandDirection.z -= _landLength;
         }
-        SpawnerObjects.SpawnObject(_landPrefabs[0], _spawnLandDirection, _quaternion);
+        SpawnerObjects.SpawnObject(_barricadePrefabs[0], _spawnLandDirection, _quaternion);
     }
 
     private void Start()
