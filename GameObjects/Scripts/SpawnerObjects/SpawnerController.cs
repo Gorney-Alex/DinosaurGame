@@ -28,19 +28,29 @@ public class SpawnerController : MonoBehaviour
 
     public void SpawningBarricades()
     {
+        int randomIndexLength = Random.Range(Constants.BARRICADE_LENGTH_MIN, Constants.BARRICADE_LENGTH_MAX);
         if (ObjectDataBase.BarricadeList.Count > 0)
         {
-            _spawnBarricadeDirection = ObjectDataBase.BarricadeList[ObjectDataBase.BarricadeList.Count - 1].transform.position + new Vector3(0f, 0f, -_landLength);
+            _spawnBarricadeDirection = ObjectDataBase.BarricadeList[ObjectDataBase.BarricadeList.Count - 1].transform.position + new Vector3(0f, 0f, -randomIndexLength);
         }
         else
         {
-            _spawnBarricadeDirection.z -= _landLength;
+            _spawnBarricadeDirection.z -= Constants.FIRST_BARRICADE_LENGTH;
         }
         SpawnerObjects.SpawnObject(_barricadePrefabs[0], _spawnBarricadeDirection, _quaternion);
     }
 
+    public void SpawnFirstRoad(int AmountOfLands)
+    {
+        for (int i = 0; i < AmountOfLands; i++)
+        {
+            SpawningLandRoad();
+        }
+    }
+
     private void Start()
     {
+        SpawnFirstRoad(Constants.AMOUNT_FIRST_LANDS);
         StartCoroutine(TimeForSpawnLands());
     }
 
