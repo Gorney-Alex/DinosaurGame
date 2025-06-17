@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IAttackable
 {
-    private static int _startHealth;
+    private static int _startHealth = 3;
 
-    private int _health;
+    private int _health = 3;
     private string _name;
 
     public void SetPlayerHealth()

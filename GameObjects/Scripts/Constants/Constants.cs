@@ -10,4 +10,8 @@ public static class Constants
     public const int FIRST_BARRICADE_LENGTH = 30;
 
     public const string TAG_LAND = "Land";
+    public const string TAG_PLAYER = "Player";
+    public const string TAG_BARRICADE = "Barricade";
+
+    public const int BARRICADE_DAMAGE = 1;
 }
