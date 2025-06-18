@@ -1,3 +1,5 @@
+//Alex-Gorney programm
+
 using UnityEngine;
 
 public static class SpawnerObjects
